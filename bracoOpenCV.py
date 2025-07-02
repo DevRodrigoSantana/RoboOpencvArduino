@@ -3,19 +3,18 @@ import mediapipe as mp
 import serial
 import time
 
-# Inicialização do MediaPipe
+
 mp_maos = mp.solutions.hands
 maos = mp_maos.Hands()
 desenho = mp.solutions.drawing_utils
 
-# Configuração da porta serial
-porta_serial = "COM22"  # Altere para a COM correta do seu Arduino
+l
+porta_serial = "COM22" 
 velocidade = 9600
 arduino = serial.Serial(porta_serial, velocidade)
 time.sleep(2)
 
 
-# Função para detectar se a mão está fechada (para controlar o 3º servo)
 def mao_esta_fechada(pontos_mao):
     dedos = [(8, 6), (12, 10), (16, 14), (20, 18)]
     dedos_fechados = 0
@@ -25,20 +24,20 @@ def mao_esta_fechada(pontos_mao):
     return dedos_fechados >= 3
 
 
-# Envia os três valores para o Arduino
+
 def mover_servos(angulo_x, angulo_y, estado_mao_esquerda):
     comando = f"{angulo_x},{angulo_y},{estado_mao_esquerda}\n"
     print(f"Enviando comando: {comando.strip()}")
     arduino.write(comando.encode())
 
 
-# Inicia a webcam
+
 camera = cv2.VideoCapture(0)
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1000)
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 800)
 
-# Variável para guardar o estado da mão esquerda
-estado_mao_esquerda = 1  # padrão: aberta
+
+estado_mao_esquerda = 1  
 
 while True:
     sucesso, quadro = camera.read()
@@ -94,10 +93,10 @@ while True:
 
     cv2.imshow("Controle com Mãos", quadro)
 
-    if cv2.waitKey(1) & 0xFF == 27:  # Tecla ESC para sair
+    if cv2.waitKey(1) & 0xFF == 27:  
         break
 
-# Encerra a comunicação
+
 arduino.close()
 camera.release()
 cv2.destroyAllWindows()
