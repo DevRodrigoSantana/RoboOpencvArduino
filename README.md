@@ -16,11 +16,11 @@ Este projeto permite controlar um robô (ou qualquer sistema com motores) a part
 ## 📁 Estrutura
 
 RoboOpencvArduino/
-├── arduino/
-│ └── robo_motores.ino # Código para o Arduino
-├── python/
-│ └── main.py # Script Python com OpenCV
-└── README.md # Este arquivo
+-arduino/
+--- robo_motores.ino # Código para o Arduino
+-python/
+--- main.py # Script Python com OpenCV
+-README.md # Este arquivo
 
 
 
