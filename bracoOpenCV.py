@@ -8,7 +8,7 @@ mp_maos = mp.solutions.hands
 maos = mp_maos.Hands()
 desenho = mp.solutions.drawing_utils
 
-l
+
 porta_serial = "COM22" 
 velocidade = 9600
 arduino = serial.Serial(porta_serial, velocidade)
